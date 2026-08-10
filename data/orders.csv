@@ -1,0 +1,6 @@
+order_id,customer_id,product_id,quantity,amount,status,created_at
+ORD001,C001,P001,1,1799,Shipped,2026-08-07
+ORD002,C002,P006,1,2999,Out for Delivery,2026-08-08
+ORD003,C003,P004,2,1998,Confirmed,2026-08-08
+ORD004,C004,P008,1,2799,Delivered,2026-08-05
+ORD005,C005,P003,1,2499,Processing,2026-08-09

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Commerce Copilot — Login</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-layout">
+            <!-- Left Side: Branding -->
+            <div class="auth-branding">
+                <div class="logo-icon">🛒</div>
+                <h1>AI Commerce<br>Copilot</h1>
+                <p class="subtitle">Your AI Employee for Online Commerce</p>
+                
+                <div class="auth-feature-item">
+                    <div class="auth-feature-icon">🤖</div>
+                    <div class="auth-feature-text">
+                        <h4>Intelligent Commerce</h4>
+                        <p>AI-powered product and order assistance</p>
+                    </div>
+                </div>
+
+                <div class="auth-feature-item">
+                    <div class="auth-feature-icon">🎙️</div>
+                    <div class="auth-feature-text">
+                        <h4>Voice Conversations</h4>
+                        <p>Talk naturally with your AI assistant</p>
+                    </div>
+                </div>
+
+                <div class="auth-feature-item">
+                    <div class="auth-feature-icon">📞</div>
+                    <div class="auth-feature-text">
+                        <h4>AI Calling Agent</h4>
+                        <p>Customers can call and interact with AI</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Auth Card -->
+            <div class="auth-card">
+                <!-- Login View -->
+                <div id="login-view">
+                    <h2>Welcome back 👋</h2>
+                    <p class="card-desc">Sign in to continue to AI Commerce Copilot</p>
+                    
+                    <div id="auth-alert" style="display:none; padding:10px 14px; margin-bottom:16px; border-radius:8px; font-size:13px;"></div>
+
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input type="email" id="login-email" class="form-control" placeholder="you@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div style="display:flex; gap:8px;">
+                                <input type="password" id="login-password" class="form-control" placeholder="•••••••••••" required>
+                                <button type="button" class="btn-secondary" style="width: auto; padding: 0 12px;" onclick="togglePassword('login-password')">👁️</button>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary" style="margin-top:10px;">Sign In</button>
+                    </form>
+
+                    <div class="auth-divider">───── OR ─────────</div>
+                    <button class="btn-secondary" onclick="alert('Google Auth is not configured in .env')">G Continue with Google</button>
+                    
+                    <p style="text-align: center; font-size: 13px; margin-top: 20px; color: var(--text-muted);">
+                        Don't have an account? <a href="#" onclick="showView('signup-view')" style="color: var(--purple-primary); font-weight: 600; text-decoration: none;">Sign up</a>
+                    </p>
+                </div>
+
+                <!-- Signup View -->
+                <div id="signup-view" style="display: none;">
+                    <h2>Create your account</h2>
+                    <p class="card-desc">Start managing your business with AI Copilot</p>
+
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="signup-name">Full Name</label>
+                            <input type="text" id="signup-name" class="form-control" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" class="form-control" placeholder="Create password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-confirm">Confirm Password</label>
+                            <input type="password" id="signup-confirm" class="form-control" placeholder="Confirm password" required>
+                        </div>
+                        <button type="submit" class="btn-primary" style="margin-top:10px;">Create Account</button>
+                    </form>
+
+                    <p style="text-align: center; font-size: 13px; margin-top: 20px; color: var(--text-muted);">
+                        Already have an account? <a href="#" onclick="showView('login-view')" style="color: var(--purple-primary); font-weight: 600; text-decoration: none;">Log in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showView(viewId) {
+            document.getElementById('login-view').style.display = 'none';
+            document.getElementById('signup-view').style.display = 'none';
+            document.getElementById(viewId).style.display = 'block';
+            document.getElementById('auth-alert').style.display = 'none';
+        }
+
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        function showAlert(msg, isError = true) {
+            const alert = document.getElementById('auth-alert');
+            alert.style.display = 'block';
+            alert.style.backgroundColor = isError ? '#FEF2F2' : '#F0FDF4';
+            alert.style.color = isError ? '#DC2626' : '#16A34A';
+            alert.style.border = isError ? '1px solid #FECACA' : '1px solid #BBF7D0';
+            alert.textContent = msg;
+        }
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const res = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                window.location.href = '/';
+            } else {
+                showAlert(data.message, true);
+            }
+        });
+
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+
+            if (password !== confirm) {
+                showAlert('Passwords do not match.', true);
+                return;
+            }
+
+            const res = await fetch('/api/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password })
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                showAlert('Account created! Redirecting...', false);
+                setTimeout(() => window.location.href = '/', 1200);
+            } else {
+                showAlert(data.message, true);
+            }
+        });
+    </script>
+</body>
+</html>

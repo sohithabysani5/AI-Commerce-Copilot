@@ -1,0 +1,14 @@
+streamlit
+python-dotenv
+pandas
+google-generativeai
+SpeechRecognition
+gTTS
+pydub
+twilio
+fastapi
+uvicorn
+python-multipart
+audio-recorder-streamlit
+bcrypt
+flask

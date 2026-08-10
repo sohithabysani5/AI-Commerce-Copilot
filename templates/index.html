@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Commerce Copilot — Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🤖 Commerce Copilot</h2>
+                <p>Your 24/7 AI Employee for Online Commerce</p>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-subtle);">
+
+            <div class="sidebar-section">
+                <h3>✨ Capabilities</h3>
+                <ul class="capability-list">
+                    <li>🛍️ Product Search</li>
+                    <li>🛒 Order Placement</li>
+                    <li>📦 Order Tracking</li>
+                    <li>↩️ Return Requests</li>
+                    <li>❌ Order Cancellation</li>
+                </ul>
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid var(--border-subtle);">
+
+            <div class="sidebar-section">
+                <h3>🌐 Language</h3>
+                <select id="language-select" class="form-control" onchange="changeLanguage(this.value)">
+                    <option value="en" {{ 'selected' if user_language == 'en' else '' }}>English</option>
+                    <option value="te" {{ 'selected' if user_language == 'te' else '' }}>తెలుగు (Telugu)</option>
+                    <option value="hi" {{ 'selected' if user_language == 'hi' else '' }}>हिन्दी (Hindi)</option>
+                </select>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>👤 Customer ID</h3>
+                <input type="text" id="customer-id-input" class="form-control" value="{{ customer_id }}" onchange="updateCustomerId(this.value)">
+            </div>
+
+            <div class="sidebar-section">
+                <h3>📊 Customer Dashboard</h3>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="label">Total Orders</div>
+                        <div class="value" id="metric-total-orders">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Active Orders</div>
+                        <div class="value" id="metric-active-orders">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Cancelled</div>
+                        <div class="value" id="metric-cancelled-orders">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="label">Total Spending</div>
+                        <div class="value" id="metric-spending">-</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>🔄 Order State</h3>
+                <pre class="order-state-box" id="order-state-json">No active order process.</pre>
+            </div>
+
+            <button class="btn-secondary" onclick="clearConversation()" style="margin-top: auto;">🗑️ Clear Conversation</button>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <div class="top-header">
+                <div class="header-title">
+                    <h1>🛒 AI Commerce Copilot</h1>
+                    <p>Your AI Employee for Online Commerce</p>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-info">
+                        <div class="name">👤 {{ user_name }}</div>
+                        <div class="email">{{ user_email }}</div>
+                    </div>
+                    <button class="btn-logout" onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+            <!-- Tabs Navigation -->
+            <nav class="tabs-nav">
+                <button class="tab-btn active" onclick="switchTab('tab-orders', this)">📦 Orders</button>
+                <button class="tab-btn" onclick="switchTab('tab-assistant', this)">💬 AI Assistant</button>
+                <button class="tab-btn" onclick="switchTab('tab-voice', this)">🎙️ Voice AI</button>
+            </nav>
+
+            <!-- Tab 1: Orders -->
+            <section id="tab-orders" class="tab-content active">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">📦 Orders — <span id="orders-customer-label">{{ customer_id }}</span></h3>
+                <div id="orders-list-container" class="orders-grid">
+                    <p style="color: var(--text-muted);">Loading orders...</p>
+                </div>
+            </section>
+
+            <!-- Tab 2: AI Assistant -->
+            <section id="tab-assistant" class="tab-content">
+                <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;">💬 AI Commerce Copilot</h3>
+                <div class="chat-container">
+                    <div id="chat-history" class="chat-history">
+                        <div class="chat-message assistant">
+                            <div class="avatar">🤖</div>
+                            <div class="bubble">👋 Welcome! I can help you with products, orders, returns, and cancellations.</div>
+                        </div>
+                    </div>
+
+                    <div class="suggestion-chips">
+                        <div class="chip" onclick="sendSuggestion('Show me dresses')">🛍️ Show me dresses</div>
+                        <div class="chip" onclick="sendSuggestion('I want to order a black dress under ₹2000')">🛒 Black dress under ₹2000</div>
+                        <div class="chip" onclick="sendSuggestion('Where is my order ORD001?')">📦 Track ORD001</div>
+                        <div class="chip" onclick="sendSuggestion('Cancel order ORD002')">❌ Cancel ORD002</div>
+                    </div>
+
+                    <div class="chat-input-bar">
+                        <input type="text" id="chat-user-input" class="form-control" placeholder="Ask your Commerce Copilot..." onkeydown="if(event.key === 'Enter') sendMessage()">
+                        <button class="btn-primary" style="width: auto; padding: 0 24px;" onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 3: Voice AI -->
+            <section id="tab-voice" class="tab-content">
+                <!-- Outbound Call Section -->
+                <div class="voice-section">
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">📞 Make an AI Phone Call</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Enter phone number including country code (e.g. +91XXXXXXXXXX)</p>
+                    <div style="display: flex; gap: 12px; max-width: 450px;">
+                        <input type="text" id="phone-number-input" class="form-control" placeholder="+1234567890">
+                        <button class="btn-primary" style="width: auto; padding: 0 20px;" onclick="initiateCall()">Initiate Call</button>
+                    </div>
+                    <div id="call-status" style="margin-top: 10px; font-size: 13px;"></div>
+                </div>
+
+                <!-- Web Microphone Section -->
+                <div class="voice-section">
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">🎤 Web Voice Assistant</h3>
+                    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Click the microphone to speak to your AI Copilot in your browser.</p>
+
+                    <div class="mic-container">
+                        <button id="mic-toggle-btn" class="mic-btn" onclick="toggleMicrophone()">🎙️</button>
+                        <p id="mic-status-label" style="font-size: 14px; font-weight: 600; color: var(--text-muted);">Click to Speak</p>
+                    </div>
+
+                    <div id="voice-response-container" style="display: none; margin-top: 20px; padding: 16px; background: #F0F2F5; border-radius: var(--radius-md);">
+                        <p><strong>Transcription:</strong> <span id="voice-transcription">-</span></p>
+                        <p style="margin-top: 8px;"><strong>AI Response:</strong> <span id="voice-reply">-</span></p>
+                        <div id="voice-audio-wrapper" style="margin-top: 12px;"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

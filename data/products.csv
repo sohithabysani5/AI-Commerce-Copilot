@@ -1,0 +1,11 @@
+product_id,name,category,description,price,color,size,stock,rating
+P001,Elegant Black Dress,Dress,Stylish black party dress,1799,Black,M,10,4.5
+P002,Floral Summer Dress,Dress,Comfortable floral summer dress,1499,Blue,M,15,4.3
+P003,Designer Red Saree,Saree,Traditional designer saree,2499,Red,Free,8,4.7
+P004,Classic Cotton Kurti,Kurti,Casual cotton kurti for daily wear,999,Yellow,L,20,4.2
+P005,Party Wear Kurti,Kurti,Stylish kurti for parties,1599,Pink,M,12,4.6
+P006,Golden Necklace,Jewelry,Elegant necklace for special occasions,2999,Gold,Free,5,4.8
+P007,Pearl Necklace,Jewelry,Simple pearl necklace for gifting,1999,White,Free,9,4.5
+P008,Leather Handbag,Handbag,Premium handbag for daily use,2799,Black,Free,7,4.6
+P009,Classic Formal Shirt,Shirt,Formal shirt for office use,1299,White,L,18,4.4
+P010,Premium Black Shirt,Shirt,Stylish black shirt for parties,1599,Black,M,11,4.5

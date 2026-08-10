@@ -1,0 +1,66 @@
+[
+    {
+        "call_sid": "CA6302b8913a20c57f9f8e7c83b3704288",
+        "timestamp": "2026-08-11T03:58:05.820892",
+        "customer_id": null,
+        "language": "en",
+        "history": [
+            {
+                "role": "user",
+                "content": "I want  I want to cancel an order."
+            },
+            {
+                "role": "agent",
+                "content": "I can help you with:\n\n🛍️ **Product search**\n🛒 **Place an order**\n📦 **Order tracking**\n❌ **Order cancellation**\n↩️ **Return requests**\n\nTry saying:\n\n• I want a dress\n• I want to order\n• Show me dresses\n• Where is my order ORD001?\n• Cancel order ORD002"
+            },
+            {
+                "role": "user",
+                "content": "002"
+            },
+            {
+                "role": "agent",
+                "content": "I can help you with:\n\n🛍️ **Product search**\n🛒 **Place an order**\n📦 **Order tracking**\n❌ **Order cancellation**\n↩️ **Return requests**\n\nTry saying:\n\n• I want a dress\n• I want to order\n• Show me dresses\n• Where is my order ORD001?\n• Cancel order ORD002"
+            },
+            {
+                "role": "user",
+                "content": "002"
+            },
+            {
+                "role": "agent",
+                "content": "I can help you with:\n\n🛍️ **Product search**\n🛒 **Place an order**\n📦 **Order tracking**\n❌ **Order cancellation**\n↩️ **Return requests**\n\nTry saying:\n\n• I want a dress\n• I want to order\n• Show me dresses\n• Where is my order ORD001?\n• Cancel order ORD002"
+            }
+        ]
+    },
+    {
+        "call_sid": "CA0f9dcb53881edf6e98121077a076216b",
+        "timestamp": "2026-08-11T04:13:53.230863",
+        "customer_id": null,
+        "language": "en",
+        "history": [
+            {
+                "role": "user",
+                "content": "I want to check my order."
+            },
+            {
+                "role": "agent",
+                "content": "I can help you with:\n\n🛍️ **Product search**\n🛒 **Place an order**\n📦 **Order tracking**\n❌ **Order cancellation**\n↩️ **Return requests**\n\nTry saying:\n\n• I want a dress\n• I want to order\n• Show me dresses\n• Where is my order ORD001?\n• Cancel order ORD002"
+            },
+            {
+                "role": "user",
+                "content": "Mera Naam"
+            },
+            {
+                "role": "agent",
+                "content": "I can help you with:\n\n🛍️ **Product search**\n🛒 **Place an order**\n📦 **Order tracking**\n❌ **Order cancellation**\n↩️ **Return requests**\n\nTry saying:\n\n• I want a dress\n• I want to order\n• Show me dresses\n• Where is my order ORD001?\n• Cancel order ORD002"
+            },
+            {
+                "role": "user",
+                "content": "Ek Vari"
+            },
+            {
+                "role": "agent",
+                "content": "I can help you with:\n\n🛍️ **Product search**\n🛒 **Place an order**\n📦 **Order tracking**\n❌ **Order cancellation**\n↩️ **Return requests**\n\nTry saying:\n\n• I want a dress\n• I want to order\n• Show me dresses\n• Where is my order ORD001?\n• Cancel order ORD002"
+            }
+        ]
+    }
+]
