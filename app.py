@@ -249,7 +249,7 @@ def voice_incoming():
         call_manager.cleanup_old_sessions()
 
         # Natural human greeting
-        greeting = "Hello! Thank you for calling AI Commerce Copilot. How can I help you today?"
+        greeting = "I am calling from an AI calling agent. How can I help you?"
         action_url = f"{WEBHOOK_BASE_URL}/voice/process"
 
         twiml = telephony.create_gather_twiml(
@@ -314,11 +314,8 @@ def voice_process_speech():
         logger.info(f"User said on call {call_sid} ({current_lang}): {speech_result}")
         session_data["conversation_history"].append({"role": "user", "content": speech_result})
 
-        response_text = local_commerce_agent(
-            user_message=speech_result,
-            state=session_data["order_state"],
-            language=current_lang,
-        )
+        from agents.commerce_agent import ask_commerce_agent
+        response_text = ask_commerce_agent(speech_result)
         session_data["conversation_history"].append({"role": "agent", "content": response_text})
 
         # Format into clean 100% human speech (no emojis, no markdown, no technical instructions)

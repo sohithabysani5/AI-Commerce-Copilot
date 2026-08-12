@@ -156,11 +156,8 @@ class VoiceAgent:
 
         # 2. Commerce Agent
         logger.info("Calling commerce agent...")
-        response_text = local_commerce_agent(
-            transcription,
-            order_state,
-            language=language,
-        )
+        from agents.commerce_agent import ask_commerce_agent
+        response_text = ask_commerce_agent(transcription)
 
         logger.info(
             "AI Response: %s",

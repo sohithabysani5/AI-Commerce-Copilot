@@ -62,5 +62,103 @@
                 "content": "I can help you with:\n\n🛍️ **Product search**\n🛒 **Place an order**\n📦 **Order tracking**\n❌ **Order cancellation**\n↩️ **Return requests**\n\nTry saying:\n\n• I want a dress\n• I want to order\n• Show me dresses\n• Where is my order ORD001?\n• Cancel order ORD002"
             }
         ]
+    },
+    {
+        "call_sid": "CA9af63aadce1430205a422402e676ad48",
+        "timestamp": "2026-08-11T10:05:35.265577",
+        "customer_id": null,
+        "language": "en",
+        "history": [
+            {
+                "role": "user",
+                "content": "I want Tu order adress."
+            },
+            {
+                "role": "agent",
+                "content": "I found 2 products matching your request:\n\n1. **Elegant Black Dress**\n   Price: ₹1799.0\n   Color: Black\n   Size: M\n   Stock: 5\n   Rating: 4.5/5\n\n2. **Floral Summer Dress**\n   Price: ₹1499.0\n   Color: Blue\n   Size: M\n   Stock: 7\n   Rating: 4.3/5\n\n\nPlease enter the number of the product you want to order."
+            },
+            {
+                "role": "user",
+                "content": "to order ki dress"
+            },
+            {
+                "role": "agent",
+                "content": "I found 2 products matching your request:\n\n1. **Elegant Black Dress**\n   Price: ₹1799.0\n   Color: Black\n   Size: M\n   Stock: 5\n   Rating: 4.5/5\n\n2. **Floral Summer Dress**\n   Price: ₹1499.0\n   Color: Blue\n   Size: M\n   Stock: 7\n   Rating: 4.3/5\n\n\nPlease enter the number of the product you want to order."
+            }
+        ]
+    },
+    {
+        "call_sid": "CAc4ac9aff46d3ab6e1dc3e1c716c02dba",
+        "timestamp": "2026-08-11T13:46:05.431591",
+        "customer_id": null,
+        "language": "en",
+        "history": []
+    },
+    {
+        "call_sid": "CA7885a99e5ee8dd6126b39aae51981dfd",
+        "timestamp": "2026-08-11T13:51:18.488696",
+        "customer_id": null,
+        "language": "en",
+        "history": [
+            {
+                "role": "user",
+                "content": "can u explain about air polling agent"
+            },
+            {
+                "role": "agent",
+                "content": "I can help you with:\n\n🛍️ **Product search**\n🛒 **Place an order**\n📦 **Order tracking**\n❌ **Order cancellation**\n↩️ **Return requests**\n\nTry saying:\n\n• I want a dress\n• I want to order\n• Show me dresses\n• Where is my order ORD001?\n• Cancel order ORD002"
+            },
+            {
+                "role": "user",
+                "content": "class how can I help  u r"
+            },
+            {
+                "role": "agent",
+                "content": "I can help you with:\n\n🛍️ **Product search**\n🛒 **Place an order**\n📦 **Order tracking**\n❌ **Order cancellation**\n↩️ **Return requests**\n\nTry saying:\n\n• I want a dress\n• I want to order\n• Show me dresses\n• Where is my order ORD001?\n• Cancel order ORD002"
+            }
+        ]
+    },
+    {
+        "call_sid": "CAc74db33e99bc76d6f199bfa60c550903",
+        "timestamp": "2026-08-11T13:57:39.342123",
+        "customer_id": null,
+        "language": "en",
+        "history": []
+    },
+    {
+        "call_sid": "CAd775bdea0dc343a04720b2039ebb80bd",
+        "timestamp": "2026-08-12T22:58:30.872870",
+        "customer_id": null,
+        "language": "en",
+        "history": [
+            {
+                "role": "user",
+                "content": "I want I want Tu give an order.  Can you hear my voice?  Hello."
+            }
+        ]
+    },
+    {
+        "call_sid": "CAafd5d4096f40f8717d93fe855e2166bd",
+        "timestamp": "2026-08-12T23:02:21.018572",
+        "customer_id": null,
+        "language": "en",
+        "history": [
+            {
+                "role": "user",
+                "content": "Pyar"
+            }
+        ]
+    },
+    {
+        "call_sid": "CAf38360338eaa064359858eea674229a6",
+        "timestamp": "2026-08-12T23:04:15.042129",
+        "customer_id": null,
+        "language": "en",
+        "history": [
+            {
+                "role": "user",
+                "content": "I want your dress show me some dress.  Can you show me a dresses?"
+            }
+        ]
     }
 ]
