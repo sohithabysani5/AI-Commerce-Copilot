@@ -21,3 +21,5 @@ database/*.db
 .idea/
 .DS_Store
 Thumbs.db
+ngrok.log
+server_log.txt
